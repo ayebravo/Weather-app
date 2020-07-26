@@ -1,0 +1,262 @@
+@media (max-width: 1291px) {
+  .col-5.right-side.border-l {
+    border: none;
+    max-width: 60%;
+    flex-basis: 60%;
+  }
+  .col-md-7.left-side {
+    max-width: 100%;
+    flex-basis: 75%;
+  }
+
+  .row.more-information .card {
+    max-width: 84%;
+    flex-basis: 84%;
+  }
+}
+
+@media (max-width: 576px) {
+  .col-sm-4.current-temperature,
+  .col-sm-4.weather-now,
+  .row.current-city .col-sm-4,
+  .row.current-city.col.degree-type,
+  .col-5.right-side.border-l .col-sm-4,
+  .col-5.right-side.border-l .col-sm-4.image {
+    max-width: 35%;
+    flex-basis: 35%;
+  }
+
+  .row.search-area .col-sm-8 {
+    max-width: 70%;
+    flex-basis: 70%;
+  }
+
+  .row.more-information .card {
+    max-width: 75%;
+    flex-basis: 75%;
+  }
+
+  .row.search-area .col-sm-2,
+  .col-5.right-side.border-l .col-sm-4.both-temp {
+    max-width: 30%;
+    flex-basis: 30%;
+  }
+
+  .col-sm-1.favorite {
+    max-width: 10%;
+    flex-basis: 10%;
+  }
+}
+
+body {
+  margin: 30px;
+  max-width: 50%;
+  margin: 20px auto;
+  min-width: fit-content;
+}
+
+.container {
+  border: solid 3px #4fae54;
+  border-radius: 5px;
+  padding: 20px 15px 27px 30px;
+  max-width: 100%;
+  min-height: 100%;
+  background-image: linear-gradient(
+    to top,
+    #d5d4d0 0%,
+    #d5d4d0 1%,
+    #eeeeec 31%,
+    #efeeec 75%,
+    #e9e9e7 100%
+  );
+}
+
+h1 {
+  font-size: 60px;
+  color: #32a138;
+  margin-top: 20px;
+}
+
+a {
+  color: #3242b9;
+  font-family: "Patrick Hand";
+  font-size: 20px;
+}
+
+.col-5.right-side {
+  min-width: fit-content;
+  padding-right: 0;
+}
+
+.row.temperature {
+  margin-top: 0;
+}
+
+.fav-cities {
+  margin-left: -12px;
+}
+
+.col.degree-type {
+  border: 2px solid #000000;
+  border-radius: 4px;
+  max-width: fit-content;
+  margin: 6px 10px auto 30px;
+}
+
+.col-C,
+.col-F {
+  display: inline;
+  letter-spacing: 2px;
+}
+
+.col-C {
+  margin-right: 5px;
+  border-right: 2px solid #000000;
+  padding-right: 3px;
+}
+
+.col-F {
+  padding-left: 5px;
+}
+
+.col.degree-type a:hover {
+  color: #f7ba44;
+  text-decoration: none;
+}
+.col.degree-type a:focus {
+  color: #32a138;
+}
+
+.city {
+  margin: 14px;
+}
+
+.current-city {
+  margin-top: 30px;
+  min-width: fit-content;
+}
+
+.col-sm-1.favorite {
+  margin-left: 25px;
+  margin-right: -6px;
+}
+
+.far.fa-star {
+  font-size: 22px;
+  margin-top: 10px;
+  transition: all 200ms ease-in-out;
+}
+
+.far.fa-star:hover {
+  color: #32a138;
+  cursor: pointer;
+}
+
+.border-l {
+  border-left: 2px solid #4fae54;
+}
+
+.row.max-min {
+  color: #283593;
+  font-size: 20px;
+  font-family: "Quicksand", sans-serif;
+  margin-bottom: 20px;
+}
+
+.row.max-min .col-sm-3.max {
+  padding-left: 6px;
+}
+
+.row.max-min .col-sm-3.min {
+  padding-left: 0;
+  margin-right: 15px;
+}
+
+.col-sm-4.weather-now img {
+  width: 70px;
+  margin-top: 20px;
+  position: relative;
+  left: -13px;
+}
+
+.col-sm-4 p.date-1,
+p.date-2,
+p.date-3,
+p.date-4,
+p.date-5 {
+  margin-top: -7px;
+  text-align: center;
+}
+
+.col-sm-4 h5 {
+  color: #32a138;
+}
+
+.col-sm-4.both-temp {
+  padding: 0;
+  text-align: center;
+  word-spacing: 10px;
+  margin: 1px -10px 0 10px;
+}
+
+.max-temp,
+.min-temp {
+  display: inline;
+}
+
+.col-sm-4.image img {
+  width: 38px;
+}
+
+.row.more-information {
+  margin-top: 24px;
+  padding-left: -10px;
+  min-width: fit-content;
+}
+
+.row.more-information .description,
+.number {
+  display: inline;
+}
+
+.row.more-information .number {
+  margin-left: 60px;
+}
+
+.row.more-information .col-sm-8 {
+  padding-left: 15px;
+  padding-right: 42px;
+}
+
+.row.more-information .card {
+  background-color: transparent;
+  border: 2px groove #3242b9;
+  margin-bottom: 30px;
+}
+
+.row.more-information .card-body {
+  padding: 15px 0 0 17px;
+  line-height: 15px;
+}
+
+.card-body .row .description {
+  color: #3242b9;
+  padding-left: 15px;
+}
+
+span {
+  color: #3242b9;
+  font-weight: bold;
+}
+
+.card-body .row {
+  padding-left: 10px;
+}
+
+.col-sm-6.button {
+  margin-top: 10px;
+}
+
+#overall-description {
+  text-transform: capitalize;
+}
