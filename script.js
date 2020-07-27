@@ -53,7 +53,7 @@ updatedDateTime.innerHTML = showDateTime(newDate);
 let apiKey = `a3f1de950d2940f6c2f8ca0198eb4ea2`;
 let units = `metric`;
 let city = `Paris`;
-let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
 
 function showTempParis(response) {
   let city = `Paris`;
@@ -109,7 +109,7 @@ function search(event) {
 
   let apiKey = `a3f1de950d2940f6c2f8ca0198eb4ea2`;
   let units = `metric`;
-  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
 
   let urlWithKey = `${apiUrl}&appid=${apiKey}`;
   axios.get(urlWithKey).then(showTemperature);
