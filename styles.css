@@ -257,6 +257,28 @@ span {
   margin-top: 10px;
 }
 
+.github-repository {
+  margin-top: 8px;
+  margin-left: 4px;
+}
+
+.github-repository p,
+.github-link {
+  display: inline;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 15px;
+}
+
+.github-link {
+  color: #283593;
+  font-weight: 300;
+}
+
+.github-link:hover {
+  text-decoration: none;
+  color: #4aa139;
+}
+
 #overall-description {
   text-transform: capitalize;
 }
