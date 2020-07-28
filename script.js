@@ -98,6 +98,17 @@ function changeImage(temperature) {
   }
 }
 
+// Search function (city)
+
+function search(city) {
+  let apiKey = `a3f1de950d2940f6c2f8ca0198eb4ea2`;
+  let units = `metric`;
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
+
+  let urlWithKey = `${apiUrl}&appid=${apiKey}`;
+  axios.get(urlWithKey).then(showTemperature);
+}
+
 // Temperature with API when user searchs for a city with form
 
 function handleSubmit(event) {
@@ -107,12 +118,7 @@ function handleSubmit(event) {
   let cityName = document.querySelector("#city");
   cityName.innerHTML = `${city}`;
 
-  let apiKey = `a3f1de950d2940f6c2f8ca0198eb4ea2`;
-  let units = `metric`;
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
-
-  let urlWithKey = `${apiUrl}&appid=${apiKey}`;
-  axios.get(urlWithKey).then(showTemperature);
+  search(city);
 }
 
 let searchEngineForm = document.querySelector("#search-form");
