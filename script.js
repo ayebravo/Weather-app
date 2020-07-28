@@ -48,44 +48,6 @@ updatedDateTime.innerHTML = showDateTime(newDate);
 
 // Using API: when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
 
-// Temperature Paris, France for when first opening weather app (with API)
-
-let apiKey = `a3f1de950d2940f6c2f8ca0198eb4ea2`;
-let units = `metric`;
-let city = `Paris`;
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=${apiKey}&units=${units}`;
-
-function showTempParis(response) {
-  let city = `Paris`;
-  let cityName = document.querySelector("#city");
-  cityName.innerHTML = `${city}`;
-
-  let tempLandingPage = document.querySelector("#temp-number");
-  let tempRounded = Math.round(response.data.main.temp);
-  tempLandingPage.innerHTML = `${tempRounded}°`;
-
-  // More information card updated with API - Celsius
-
-  let feelsLike = document.querySelector("#feels-like-number");
-  let tempLike = Math.round(response.data.main.feels_like);
-  feelsLike.innerHTML = `${tempLike}°`;
-
-  let humidityNumber = document.querySelector("#humidity-number");
-  let humidity = response.data.main.humidity;
-  humidityNumber.innerHTML = `${humidity}%`;
-
-  let descriptionWeatherElement = document.querySelector(
-    "#overall-description"
-  );
-  let description = response.data.weather[0].description;
-  descriptionWeatherElement.innerHTML = `${description}`;
-
-  changeImage(tempRounded);
-}
-
-let urlWithKey = `${apiUrl}&appid=${apiKey}`;
-axios.get(urlWithKey).then(showTempParis);
-
 // Change image base on degress
 
 function changeImage(temperature) {
@@ -217,3 +179,7 @@ function displayCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#button-element");
 currentLocationButton.addEventListener("click", displayCurrentLocation);
+
+// Show Paris temperature as default when loading page by calling search function
+
+search("Paris");
