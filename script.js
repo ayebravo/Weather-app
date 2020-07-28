@@ -100,7 +100,7 @@ function changeImage(temperature) {
 
 // Temperature with API when user searchs for a city with form
 
-function search(event) {
+function handleSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-city");
   let city = `${searchInput.value}`;
@@ -116,7 +116,7 @@ function search(event) {
 }
 
 let searchEngineForm = document.querySelector("#search-form");
-searchEngineForm.addEventListener("submit", search);
+searchEngineForm.addEventListener("submit", handleSubmit);
 
 function showTemperature(response) {
   let temperatureCelsius = Math.round(response.data.main.temp);
