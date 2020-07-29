@@ -195,6 +195,17 @@ function displayCurrentLocation(event) {
 let currentLocationButton = document.querySelector("#button-element");
 currentLocationButton.addEventListener("click", displayCurrentLocation);
 
+// Add 3 favorite cities to access their weather more easily
+
+// Add event listener (click) to star (icon) with id="star-favorite"
+
+function addFavoriteCity() {
+  alert("You added a favorite city");
+}
+
+let starElement = document.querySelector("#star-favorite");
+starElement.addEventListener("click", addFavoriteCity);
+
 // Show Paris temperature as default when loading page by calling search function
 
 search("Paris");
