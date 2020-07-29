@@ -1,6 +1,12 @@
-// Date and time
+// Date and time using API
 
 function showDateTime(currentDate) {
+  let updatedDateTime = document.querySelector("#date-time");
+  let formattedDate = formatDateTime(currentDate);
+  updatedDateTime.innerHTML = `${formattedDate}`;
+}
+
+function formatDateTime(currentDate) {
   let days = [
     "Sunday",
     "Monday",
@@ -41,10 +47,6 @@ function showDateTime(currentDate) {
 
   return `${day}, ${month} ${date} - ${hour}:${minutes}`;
 }
-
-let updatedDateTime = document.querySelector("#date-time");
-let newDate = new Date();
-updatedDateTime.innerHTML = showDateTime(newDate);
 
 // Using API: when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
 
@@ -105,13 +107,26 @@ function showTemperature(response) {
   let humidity = response.data.main.humidity;
   humidityNumber.innerHTML = `${humidity}%`;
 
+  changeDescription(response);
+
+  changeImage(temperatureCelsius);
+
+  let currentDate = new Date(response.data.dt * 1000);
+  showDateTime(currentDate);
+}
+
+function changeDescription(response) {
   let descriptionWeatherElement = document.querySelector(
     "#overall-description"
   );
   let description = response.data.weather[0].description;
-  descriptionWeatherElement.innerHTML = `${description}`;
+  let main = response.data.weather[0].main;
 
-  changeImage(temperatureCelsius);
+  if (description.length < 15) {
+    descriptionWeatherElement.innerHTML = `${description}`;
+  } else {
+    descriptionWeatherElement.innerHTML = `${main}`;
+  }
 }
 
 // Change temperature shown when clicking on F's link using API
