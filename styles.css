@@ -282,3 +282,7 @@ span {
 #overall-description {
   text-transform: capitalize;
 }
+
+#date-time {
+  font-size: 14px;
+}
