@@ -279,7 +279,7 @@ span {
   color: #4aa139;
 }
 
-#overall-description {
+#overall-description:first-letter {
   text-transform: capitalize;
 }
 
