@@ -153,13 +153,7 @@ function changeDescription(response) {
     "#overall-description"
   );
   let description = response.data.weather[0].description;
-  let main = response.data.weather[0].main;
-
-  if (description.length < 15) {
-    descriptionWeatherElement.innerHTML = `${description}`;
-  } else {
-    descriptionWeatherElement.innerHTML = `${main}`;
-  }
+  descriptionWeatherElement.innerHTML = `${description}`;
 }
 
 // Change temperature shown when clicking on F's link using API
