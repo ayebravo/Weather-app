@@ -279,6 +279,11 @@ span {
   color: #4aa139;
 }
 
+#overall-description {
+  margin-top: -17px;
+  font-size: 14px;
+}
+
 #overall-description:first-letter {
   text-transform: capitalize;
 }
