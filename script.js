@@ -58,6 +58,10 @@ function changeImage(response) {
   let rainySrc = "media/weather-showers-scattered.png";
   let cloudySrc = "media/clouds.png";
   let sunCloudySrc = "media/sun-cloudy.png";
+  let stormSrc = "media/storm.png";
+  let snowFlakeSrc = "media/cold-weather.png";
+  let fogSrc = "media/foggy.png";
+
   let alternativeText = response.data.weather[0].description;
   let iconApi = response.data.weather[0].icon;
 
@@ -79,6 +83,12 @@ function changeImage(response) {
     iconApi === "10n"
   ) {
     weatherImageElement.setAttribute("src", rainySrc);
+  } else if (iconApi === "11d" || iconApi === "11n") {
+    weatherImageElement.setAttribute("src", stormSrc);
+  } else if (iconApi === "13d" || iconApi === "13n") {
+    weatherImageElement.setAttribute("src", snowFlakeSrc);
+  } else if (iconApi === "50d" || iconApi === "50n") {
+    weatherImageElement.setAttribute("src", fogSrc);
   }
 
   weatherImageElement.style.visibility = "visible";
