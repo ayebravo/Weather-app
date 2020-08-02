@@ -52,14 +52,37 @@ function formatDateTime(currentDate) {
 
 // Change image base on degress
 
-function changeImage(temperature) {
+function changeImage(response) {
   let weatherImageElement = document.querySelector("#weather-image");
+  let sunnySrc = "media/sun-cloudy.png";
+  let rainySrc = "media/weather-showers-scattered.png";
+  let cloudySrc = "media/clouds.png";
+  let sunCloudySrc = "media/sun-cloudy.png";
+  let alternativeText = response.data.weather[0].description;
+  let iconApi = response.data.weather[0].icon;
 
-  if (temperature > 20) {
-    weatherImageElement.src = "media/sun.png";
-  } else {
-    weatherImageElement.src = "media/cold-weather.png";
+  if (iconApi === "01d" || iconApi === "01n") {
+    weatherImageElement.setAttribute("src", sunnySrc);
+  } else if (iconApi === "04d" || iconApi === "04n") {
+    weatherImageElement.setAttribute("src", cloudySrc);
+  } else if (
+    iconApi === "02d" ||
+    iconApi === "02n" ||
+    iconApi === "03d" ||
+    iconApi === "03n"
+  ) {
+    weatherImageElement.setAttribute("src", sunCloudySrc);
+  } else if (
+    iconApi === "09d" ||
+    iconApi === "09n" ||
+    iconApi === "10d" ||
+    iconApi === "10n"
+  ) {
+    weatherImageElement.setAttribute("src", rainySrc);
   }
+
+  weatherImageElement.style.visibility = "visible";
+  weatherImageElement.setAttribute("alt", alternativeText);
 }
 
 // Search function (city)
@@ -109,7 +132,7 @@ function showTemperature(response) {
 
   changeDescription(response);
 
-  changeImage(temperatureCelsius);
+  changeImage(response);
 
   let currentDate = new Date(response.data.dt * 1000);
   showDateTime(currentDate);
