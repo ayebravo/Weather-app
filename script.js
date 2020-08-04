@@ -120,9 +120,12 @@ let searchEngineForm = document.querySelector("#search-form");
 searchEngineForm.addEventListener("submit", handleSubmit);
 
 function showTemperature(response) {
-  let temperatureCelsius = Math.round(response.data.main.temp);
+  celsiusTemp = Math.round(response.data.main.temp);
+  //let temperatureCelsius = Math.round(response.data.main.temp);
   let tempNumber = document.querySelector("#temp-number");
-  tempNumber.innerHTML = `${temperatureCelsius}°`;
+  tempNumber.innerHTML = `${celsiusTemp}°`;
+
+  //tempNumber.innerHTML = `${temperatureCelsius}°`;
 
   let cityElement = document.querySelector("#city");
   let cityName = response.data.name;
@@ -131,7 +134,7 @@ function showTemperature(response) {
   // More information card updated with API - Celsius
 
   let feelsLike = document.querySelector("#feels-like-number");
-  let tempLike = Math.round(response.data.main.feels_like);
+  tempLike = Math.round(response.data.main.feels_like);
   feelsLike.innerHTML = `${tempLike}°`;
 
   let humidityNumber = document.querySelector("#humidity-number");
@@ -159,7 +162,8 @@ function changeDescription(response) {
 function clickLinkF(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp-number");
-  let temperatureCelsius = parseInt(temperature.innerHTML);
+  let temperatureCelsius = celsiusTemp;
+  //let temperatureCelsius = parseInt(temperature.innerHTML);
   let tempFahrenheit = Math.round((temperatureCelsius * 9) / 5 + 32);
 
   temperature.innerHTML = `${tempFahrenheit}°`;
@@ -167,7 +171,8 @@ function clickLinkF(event) {
   // Feels like updated with API - Fahrenheit
 
   let feelsLikeC = document.querySelector("#feels-like-number");
-  let tempLikeF = parseInt(feelsLikeC.innerHTML);
+  let tempLikeF = tempLike;
+  //let tempLikeF = parseInt(feelsLikeC.innerHTML);
   let feelsLikeFahrenheit = Math.round((tempLikeF * 9) / 5 + 32);
 
   feelsLikeC.innerHTML = `${feelsLikeFahrenheit}°`;
@@ -181,18 +186,19 @@ tempFahrenheit.addEventListener("click", clickLinkF);
 function clickLinkC(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temp-number");
-  let temperatureFahrenheit = parseInt(temperature.innerHTML);
-  let tempCelsius = Math.round(((temperatureFahrenheit - 32) * 5) / 9);
+  /* let temperatureFahrenheit = tempCelsius;
+  //let temperatureFahrenheit = parseInt(temperature.innerHTML);
+  let tempCelsius = Math.round(((temperatureFahrenheit - 32) * 5) / 9); */
 
-  temperature.innerHTML = `${tempCelsius}°`;
+  temperature.innerHTML = `${celsiusTemp}°`;
 
   // Feels like updated with API - Celsius
 
   let feelsLikeC = document.querySelector("#feels-like-number");
-  let tempLikeC = parseInt(feelsLikeC.innerHTML);
-  let tempLikeCelsius = Math.round(((tempLikeC - 32) * 5) / 9);
+  /* let tempLikeC = parseInt(feelsLikeC.innerHTML);
+  let tempLikeCelsius = Math.round(((tempLikeC - 32) * 5) / 9); */
 
-  feelsLikeC.innerHTML = `${tempLikeCelsius}°`;
+  feelsLikeC.innerHTML = `${tempLike}°`;
 }
 
 let tempCelsius = document.querySelector("#change-to-celsius");
@@ -256,6 +262,11 @@ var firstFavCity = getCookie("favorite1");
 if (firstFavCity != "") {
   favoriteCity1.innerHTML = firstFavCity;
 }
+
+// Global variables that keep track of celsius temperature
+
+let celsiusTemp = 0;
+let tempLike = 0;
 
 // Show Paris temperature as default when loading page by calling search function
 
