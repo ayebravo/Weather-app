@@ -112,8 +112,6 @@ function handleSubmit(event) {
   event.preventDefault();
   let searchInput = document.querySelector("#search-city");
   let city = `${searchInput.value}`;
-  let cityName = document.querySelector("#city");
-  cityName.innerHTML = `${city}`;
 
   search(city);
 }
@@ -226,13 +224,68 @@ currentLocationButton.addEventListener("click", displayCurrentLocation);
 
 // Add event listener (click) to star (icon) with id="star-favorite"
 
-function addFavoriteCity() {
-  alert("You added a favorite city");
+function addFavoriteCity(event) {
+  event.preventDefault();
+
+  let cityElement = document.querySelector("#city");
+  let cityName = cityElement.innerHTML;
+
+  let favoriteCity1 = document.querySelector("#favorite-1");
+  favoriteCity1.innerHTML = cityName;
+
+  setCookie("favorite1", cityName, 365);
 }
 
 let starElement = document.querySelector("#star-favorite");
 starElement.addEventListener("click", addFavoriteCity);
 
+function handleClick(event) {
+  event.preventDefault();
+  let favoriteCity1El = document.querySelector("#favorite-1");
+  let city = favoriteCity1El.innerHTML;
+
+  search(city);
+}
+
+let favoriteCity1 = document.querySelector("#favorite-1");
+favoriteCity1.addEventListener("click", handleClick);
+
+// Get cookie when loading the page
+
+var firstFavCity = getCookie("favorite1");
+if (firstFavCity != "") {
+  favoriteCity1.innerHTML = firstFavCity;
+}
+
 // Show Paris temperature as default when loading page by calling search function
 
 search("Paris");
+
+// Cookies section - Generic functions copied from https://www.w3schools.com/js/js_cookies.asp
+
+//setCookies: It saves user's data in user's computer
+//cname: name of cookie (string)
+//cvalue: value you want to save
+//exdays: number of days the cookie is stored before it expires
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+  var expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+//getCookie: retrives data from user's browser
+function getCookie(cname) {
+  var name = cname + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
