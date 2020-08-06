@@ -52,8 +52,9 @@ function formatDateTime(currentDate) {
 
 // Change image base on degress
 
-function changeImage(response, forecast) {
-  let weatherImageElement = document.querySelector("#weather-image");
+function changeImage(icon) {
+  //parameters I tried: response, forecast
+  //let weatherImageElement = document.querySelector("#weather-image"); //It was fine before forecast
   let sunnySrc = "media/sun-cloudy.png";
   let rainySrc = "media/weather-showers-scattered.png";
   let cloudySrc = "media/clouds.png";
@@ -62,9 +63,39 @@ function changeImage(response, forecast) {
   let snowFlakeSrc = "media/cold-weather.png";
   let fogSrc = "media/foggy.png";
 
-  let alternativeText = response.data.weather[0].description;
-  let iconApi = response.data.weather[0].icon;
-  iconApi = forecast.weather[0].icon;
+  //iconApi = forecast.weather[0].icon;
+
+  if (icon === "01d" || icon === "01n") {
+    return sunnySrc;
+  } else if (icon === "04d" || icon === "04n") {
+    return cloudySrc;
+  } else if (
+    icon === "02d" ||
+    icon === "02n" ||
+    icon === "03d" ||
+    icon === "03n"
+  ) {
+    return sunCloudySrc;
+  } else if (
+    icon === "09d" ||
+    icon === "09n" ||
+    icon === "10d" ||
+    icon === "10n"
+  ) {
+    return rainySrc;
+  } else if (icon === "11d" || icon === "11n") {
+    return stormSrc;
+  } else if (icon === "13d" || icon === "13n") {
+    return snowFlakeSrc;
+  } else if (icon === "50d" || icon === "50n") {
+    return fogSrc;
+  } else {
+    return `https://openweathermap.org/img/wn/${icon}@2x.png`;
+  }
+
+  //What I had (working) before forecast:
+  /* let alternativeText = response.data.weather[0].description; 
+  let iconApi = response.data.weather[0].icon; 
 
   if (iconApi === "01d" || iconApi === "01n") {
     weatherImageElement.setAttribute("src", sunnySrc);
@@ -93,7 +124,7 @@ function changeImage(response, forecast) {
   }
 
   weatherImageElement.style.visibility = "visible";
-  weatherImageElement.setAttribute("alt", alternativeText);
+  weatherImageElement.setAttribute("alt", alternativeText);*/
 }
 
 // Search function (city)
@@ -139,11 +170,13 @@ function showForecast(response) {
                 <p class="min-temp">${Math.round(forecast.main.temp_min)}°</p>
               </div>
               <div class="col-sm-4 image">
-                <img src="http://openweathermap.org/img/wn/${forecastIcon}@2x.png" />
+                <img src="${changeImage(forecastIcon)}" alt="${
+    forecast.weather[0].description
+  }" />
               </div>
             </div>`;
 
-  changeImage(response, forecast);
+  // Somthing I tried: changeImage(response, forecast);
 }
 
 function showTemperature(response) {
@@ -168,7 +201,15 @@ function showTemperature(response) {
 
   changeDescription(response);
 
-  changeImage(response);
+  let weatherImageElement = document.querySelector("#weather-image");
+  weatherImageElement.setAttribute(
+    "src",
+    changeImage(response.data.weather[0].icon)
+  );
+  weatherImageElement.setAttribute("alt", response.data.weather[0].description);
+  weatherImageElement.style.visibility = "visible";
+
+  //Worked fine before changing function for forecast: changeImage(response);
 
   let currentDate = new Date(response.data.dt * 1000);
   showDateTime(currentDate);
