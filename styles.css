@@ -156,6 +156,16 @@ a {
   border-left: 2px solid #4fae54;
 }
 
+.row .day-1,
+.day-2,
+.day-3,
+.day-4,
+.day-5,
+.day-6 {
+  line-height: 1;
+  margin-bottom: 15px;
+}
+
 .row.max-min {
   color: #283593;
   font-size: 20px;
@@ -191,13 +201,15 @@ p.date-6 {
 
 .col-sm-4 h5 {
   color: #32a138;
+  font-size: 18px;
+  margin: 4px 0 0 15px;
 }
 
 .col-sm-4.both-temp {
   padding: 0;
   text-align: center;
   word-spacing: 10px;
-  margin: 1px -10px 0 10px;
+  margin: 6px -10px 0 -2px;
 }
 
 .max-temp,
@@ -206,7 +218,8 @@ p.date-6 {
 }
 
 .col-sm-4.image img {
-  width: 38px;
+  width: 36px;
+  margin-top: -4px;
 }
 
 .row.more-information {
