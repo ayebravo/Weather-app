@@ -48,6 +48,22 @@ function formatDateTime(currentDate) {
   return `${day}, ${month} ${date} - ${hour}:${minutes}`;
 }
 
+// Get time for forecast
+
+function formatHours(timestamp) {
+  let currentDate = new Date(timestamp);
+  let hour = currentDate.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let minutes = currentDate.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${hour}:${minutes}`;
+}
+
 // Using API: when a user searches for a city (example: New York), it should display the name of the city on the result page and the current temperature of the city.
 
 // Change image base on degress
@@ -126,7 +142,7 @@ function showForecast(response) {
 
   forecastElement.innerHTML = `<div class="row day-1">
               <div class="col-sm-4">
-                <h5>12:00</h5>
+                <h5>${formatHours(forecast.dt * 1000)}</h5>
               </div>
               <div class="col-sm-4 both-temp">
                 <p class="max-temp">${Math.round(forecast.main.temp_max)}°</p>
