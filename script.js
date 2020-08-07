@@ -137,10 +137,18 @@ searchEngineForm.addEventListener("submit", handleSubmit);
 
 function showForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  let forecast = response.data.list[0];
-  let forecastIcon = forecast.weather[0].icon;
+  forecastElement.innerHTML = null;
+  let forecast = null;
 
-  forecastElement.innerHTML = `<div class="row day-1">
+  // For rows 2-6, use "for loop"
+  for (let index = 0; index < 6; index++) {
+    // First row was forecast = response.data.list[0];
+    // HTML structure copied here is a template that is injected 6 times
+
+    forecast = response.data.list[index];
+    let forecastIcon = forecast.weather[0].icon;
+
+    forecastElement.innerHTML += `<div class="row day-1">
               <div class="col-sm-4">
                 <h5>${formatHours(forecast.dt * 1000)}</h5>
               </div>
@@ -150,10 +158,11 @@ function showForecast(response) {
               </div>
               <div class="col-sm-4 image">
                 <img src="${changeImage(forecastIcon)}" alt="${
-    forecast.weather[0].description
-  }" />
+      forecast.weather[0].description
+    }" />
               </div>
             </div>`;
+  }
 }
 
 function showTemperature(response) {
