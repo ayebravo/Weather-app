@@ -260,6 +260,9 @@ function showPosition(position) {
 
   let urlKey = `${apiUrl}&appid=${apiKey}`;
   axios.get(urlKey).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function displayCurrentLocation(event) {
