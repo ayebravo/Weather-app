@@ -141,7 +141,7 @@ function showForecast(response) {
   let forecast = null;
 
   // For rows 2-6, use "for loop"
-  for (let index = 0; index < 6; index++) {
+  for (let index = 0; index < 8; index++) {
     // First row was forecast = response.data.list[0];
     // HTML structure copied here is a template that is injected 6 times
 
