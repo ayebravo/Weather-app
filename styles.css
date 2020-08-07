@@ -306,3 +306,11 @@ span {
 #date-time {
   font-size: 14px;
 }
+
+#speed-number {
+  margin-left: 6px;
+}
+
+#feels-like-number {
+  margin-left: 3px;
+}

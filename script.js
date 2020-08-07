@@ -187,6 +187,8 @@ function showTemperature(response) {
 
   changeDescription(response);
 
+  showWindSpeed(response);
+
   let weatherImageElement = document.querySelector("#weather-image");
   weatherImageElement.setAttribute(
     "src",
@@ -197,6 +199,8 @@ function showTemperature(response) {
 
   let currentDate = new Date(response.data.dt * 1000);
   showDateTime(currentDate);
+
+  console.log(response.data);
 }
 
 function changeDescription(response) {
@@ -205,6 +209,12 @@ function changeDescription(response) {
   );
   let description = response.data.weather[0].description;
   descriptionWeatherElement.innerHTML = `${description}`;
+}
+
+function showWindSpeed(response) {
+  let windSpeedElement = document.querySelector("#speed-number");
+  let windSpeed = Math.round(response.data.wind.speed);
+  windSpeedElement.innerHTML = `${windSpeed} km/h`;
 }
 
 // Change temperature shown when clicking on F's link using API
