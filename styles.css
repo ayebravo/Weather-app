@@ -74,7 +74,7 @@ body {
 h1 {
   font-size: 60px;
   color: #32a138;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 a {
@@ -163,14 +163,14 @@ a {
 .day-5,
 .day-6 {
   line-height: 1;
-  margin-bottom: 15px;
+  margin-bottom: 27px;
 }
 
 .row.max-min {
   color: #283593;
   font-size: 20px;
   font-family: "Quicksand", sans-serif;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .row.max-min .col-sm-3.max {
@@ -182,11 +182,15 @@ a {
   margin-right: 15px;
 }
 
+.col-sm-4.weather-now {
+  margin-left: -15px;
+}
+
 .col-sm-4.weather-now img {
   width: 70px;
-  margin-top: 20px;
+  margin-top: 14px;
   position: relative;
-  left: -13px;
+  left: -10px;
 }
 
 .col-sm-4 p.date-1,
