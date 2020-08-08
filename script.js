@@ -120,6 +120,9 @@ function search(city) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showForecast);
+
+  celsiusLink = document.querySelector("#change-to-celsius").style.color =
+    "#32a138";
 }
 
 // Temperature with API when user searchs for a city with form
@@ -141,7 +144,7 @@ function showForecast(response) {
   let forecast = null;
 
   // For rows 2-6, use "for loop"
-  for (let index = 0; index < 8; index++) {
+  for (let index = 0; index < 6; index++) {
     // First row was forecast = response.data.list[0];
     // HTML structure copied here is a template that is injected 6 times
 
@@ -226,6 +229,9 @@ function clickLinkF(event) {
 
   temperature.innerHTML = `${tempFahrenheit}°`;
 
+  let celsiusLink = document.querySelector("#change-to-celsius");
+  celsiusLink.style.removeProperty("color");
+
   // Feels like updated with API - Fahrenheit
 
   let feelsLikeC = document.querySelector("#feels-like-number");
@@ -271,6 +277,9 @@ function showPosition(position) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
+
+  celsiusLink = document.querySelector("#change-to-celsius").style.color =
+    "#32a138";
 }
 
 function displayCurrentLocation(event) {
@@ -330,6 +339,9 @@ search(firstFavCity);
 if (firstFavCity === "") {
   search("Paris");
 }
+
+let celsiusLink = (document.querySelector("#change-to-celsius").style.color =
+  "#32a138");
 
 // Cookies section - Generic functions copied from https://www.w3schools.com/js/js_cookies.asp
 
