@@ -199,8 +199,6 @@ function showTemperature(response) {
 
   let currentDate = new Date(response.data.dt * 1000);
   showDateTime(currentDate);
-
-  console.log(response.data);
 }
 
 function changeDescription(response) {
@@ -303,7 +301,7 @@ function addFavoriteCity(event) {
 let starElement = document.querySelector("#star-favorite");
 starElement.addEventListener("click", addFavoriteCity);
 
-function handleClick(event) {
+function handleClickCity(event) {
   event.preventDefault();
   let favoriteCity1El = document.querySelector("#favorite-1");
   let city = favoriteCity1El.innerHTML;
@@ -312,7 +310,7 @@ function handleClick(event) {
 }
 
 let favoriteCity1 = document.querySelector("#favorite-1");
-favoriteCity1.addEventListener("click", handleClick);
+favoriteCity1.addEventListener("click", handleClickCity);
 
 // Get cookie when loading the page
 
