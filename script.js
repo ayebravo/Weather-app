@@ -324,9 +324,12 @@ if (firstFavCity != "") {
 let celsiusTemp = 0;
 let tempLike = 0;
 
-// Show Paris temperature as default when loading page by calling search function
+// Show favorite city 1's temperature as default when loading page. If this element doesn't have data saved through cookies, show Paris' temperature by calling search function
 
-search("Paris");
+search(firstFavCity);
+if (firstFavCity === "") {
+  search("Paris");
+}
 
 // Cookies section - Generic functions copied from https://www.w3schools.com/js/js_cookies.asp
 
