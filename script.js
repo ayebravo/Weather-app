@@ -120,9 +120,6 @@ function search(city) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showForecast);
-
-  celsiusLink = document.querySelector("#change-to-celsius").style.color =
-    "#32a138";
 }
 
 // Temperature with API when user searchs for a city with form
@@ -156,8 +153,12 @@ function showForecast(response) {
                 <h5>${formatHours(forecast.dt * 1000)}</h5>
               </div>
               <div class="col-sm-4 both-temp">
-                <p class="max-temp">${Math.round(forecast.main.temp_max)}°</p>
-                <p class="min-temp">${Math.round(forecast.main.temp_min)}°</p>
+                <p><span class="max-temp forecastItem">${Math.round(
+                  forecast.main.temp_max
+                )}</span>°</p>
+                <p><span class="min-temp forecastItem">${Math.round(
+                  forecast.main.temp_min
+                )}</span>°</p>
               </div>
               <div class="col-sm-4 image">
                 <img src="${changeImage(forecastIcon)}" alt="${
@@ -173,6 +174,10 @@ function showTemperature(response) {
 
   let tempNumber = document.querySelector("#temp-number");
   tempNumber.innerHTML = `${celsiusTemp}°`;
+
+  colorLinkC();
+
+  isCelsiusLinkClicked = true;
 
   let cityElement = document.querySelector("#city");
   let cityName = response.data.name;
@@ -218,6 +223,16 @@ function showWindSpeed(response) {
   windSpeedElement.innerHTML = `${windSpeed} km/h`;
 }
 
+// Celsius colored green
+
+function colorLinkC() {
+  let celsiusLink = document.querySelector("#change-to-celsius");
+  celsiusLink.classList.add("active");
+
+  let fahrenheitLink = document.querySelector("#change-to-Fahrenheit");
+  fahrenheitLink.classList.remove("active");
+}
+
 // Change temperature shown when clicking on F's link using API
 
 function clickLinkF(event) {
@@ -230,7 +245,10 @@ function clickLinkF(event) {
   temperature.innerHTML = `${tempFahrenheit}°`;
 
   let celsiusLink = document.querySelector("#change-to-celsius");
-  celsiusLink.style.removeProperty("color");
+  celsiusLink.classList.remove("active");
+
+  let fahrenheitLink = document.querySelector("#change-to-Fahrenheit");
+  fahrenheitLink.classList.add("active");
 
   // Feels like updated with API - Fahrenheit
 
@@ -240,6 +258,20 @@ function clickLinkF(event) {
   let feelsLikeFahrenheit = Math.round((tempLikeF * 9) / 5 + 32);
 
   feelsLikeC.innerHTML = `${feelsLikeFahrenheit}°`;
+
+  // For forecast max and min temperatures
+
+  if (isCelsiusLinkClicked === true) {
+    let forecastItems = document.querySelectorAll(".forecastItem");
+    forecastItems.forEach(function (item) {
+      // grabbing the current value to convert
+      let currentTemp = item.innerHTML;
+      // convert to Fahrenheit
+      item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+    });
+  }
+
+  isCelsiusLinkClicked = false;
 }
 
 let tempFahrenheit = document.querySelector("#change-to-Fahrenheit");
@@ -253,11 +285,31 @@ function clickLinkC(event) {
 
   temperature.innerHTML = `${celsiusTemp}°`;
 
+  let celsiusLink = document.querySelector("#change-to-celsius");
+  celsiusLink.classList.add("active");
+
+  let fahrenheitLink = document.querySelector("#change-to-Fahrenheit");
+  fahrenheitLink.classList.remove("active");
+
   // Feels like updated with API - Celsius
 
   let feelsLikeC = document.querySelector("#feels-like-number");
 
   feelsLikeC.innerHTML = `${tempLike}°`;
+
+  // For forecast max and min temperatures
+
+  if (isCelsiusLinkClicked === false) {
+    let forecastItems = document.querySelectorAll(".forecastItem");
+    forecastItems.forEach(function (item) {
+      // grabbing the current value to convert
+      let currentTemp = item.innerHTML;
+      // convert to Fahrenheit
+      item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+    });
+  }
+
+  isCelsiusLinkClicked = true;
 }
 
 let tempCelsius = document.querySelector("#change-to-celsius");
@@ -277,9 +329,6 @@ function showPosition(position) {
 
   apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${currentLatitude}&lon=${currentLongitude}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showForecast);
-
-  celsiusLink = document.querySelector("#change-to-celsius").style.color =
-    "#32a138";
 }
 
 function displayCurrentLocation(event) {
@@ -333,15 +382,16 @@ if (firstFavCity != "") {
 let celsiusTemp = 0;
 let tempLike = 0;
 
+// It keeps track if C link is clicked - True: C is clicked / False: F is clicked
+
+let isCelsiusLinkClicked = true;
+
 // Show favorite city 1's temperature as default when loading page. If this element doesn't have data saved through cookies, show Paris' temperature by calling search function
 
 search(firstFavCity);
 if (firstFavCity === "") {
   search("Paris");
 }
-
-let celsiusLink = (document.querySelector("#change-to-celsius").style.color =
-  "#32a138");
 
 // Cookies section - Generic functions copied from https://www.w3schools.com/js/js_cookies.asp
 
