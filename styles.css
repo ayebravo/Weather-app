@@ -123,7 +123,7 @@ a {
   color: #f7ba44;
   text-decoration: none;
 }
-.col.degree-type a:focus {
+.col.degree-type a.active {
   color: #32a138;
 }
 
@@ -216,9 +216,10 @@ p.date-6 {
   margin: 6px -10px 0 -2px;
 }
 
-.max-temp,
-.min-temp {
+.both-temp > p {
   display: inline;
+  color: #3242b9;
+  font-weight: 500;
 }
 
 .col-sm-4.image img {
@@ -264,6 +265,10 @@ p.date-6 {
 }
 
 span {
+  color: #3242b9;
+  font-weight: 500;
+}
+.number > span {
   color: #3242b9;
   font-weight: bold;
 }
