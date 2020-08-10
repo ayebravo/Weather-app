@@ -1,3 +1,11 @@
+@media only screen and (max-width: 465px) {
+  .row.more-information .card-body {
+    max-width: 100%;
+    flex-basis: 100%;
+    padding: 10px;
+  }
+}
+
 @media (max-width: 1291px) {
   .col-5.right-side.border-l {
     border: none;
