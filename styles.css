@@ -48,7 +48,7 @@
   }
 }
 
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+@media only screen and (max-device-width: 480px) {
   .col-5.right-side.border-l {
     border: none;
     max-width: 78%;
@@ -59,12 +59,16 @@
     padding-right: 0px;
     padding-left: 0px;
 
-    max-width: 100%;
-    flex-basis: 100%;
+    max-width: 95%;
+    flex-basis: 95%;
   }
 
   .col-sm-4.weather-now img {
     margin-left: 28px;
+  }
+
+  .col.degree-type {
+    padding-right: 12px;
   }
 }
 
