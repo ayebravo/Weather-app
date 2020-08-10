@@ -141,6 +141,12 @@ a {
   margin-right: -6px;
 }
 
+.fas.fa-star {
+  font-size: 22px;
+  margin-top: 10px;
+  color: #32a138;
+}
+
 .far.fa-star {
   font-size: 22px;
   margin-top: 10px;
