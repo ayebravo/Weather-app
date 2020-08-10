@@ -117,8 +117,7 @@
   }
 
   .col-sm-1.favorite {
-    padding-left: 0;
-    border: 2px solid red;
+    padding-left: 32px;
   }
 }
 
