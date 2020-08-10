@@ -15,6 +15,13 @@
   }
 }
 
+@media (max-width: 1180px) {
+  .row.more-information .card {
+    max-width: 90%;
+    flex-basis: 90%;
+  }
+}
+
 @media (max-width: 576px) {
   .col-sm-4.current-temperature,
   .col-sm-4.weather-now,
@@ -48,7 +55,7 @@
   }
 }
 
-@media only screen and (max-device-width: 480px) {
+@media only screen and (max-device-width: 480px) and (orientation: portrait) {
   .col-5.right-side.border-l {
     border: none;
     max-width: 78%;
