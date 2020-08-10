@@ -23,12 +23,18 @@
 }
 
 @media (max-width: 576px) {
+  .row.current-city {
+    max-width: 100%;
+    flex-basis: 100%;
+    margin-right: -55px;
+    padding-right: 0;
+  }
+
   .col-sm-4.current-temperature,
   .col-sm-4.weather-now,
   .row.current-city .col-sm-4,
   .row.current-city.col.degree-type,
-  .col-5.right-side.border-l .col-sm-4,
-  .col-5.right-side.border-l .col-sm-4.image {
+  .col-5.right-side.border-l .col-sm-4 {
     max-width: 35%;
     flex-basis: 35%;
   }
@@ -43,10 +49,18 @@
     flex-basis: 75%;
   }
 
-  .row.search-area .col-sm-2,
   .col-5.right-side.border-l .col-sm-4.both-temp {
+    max-width: 35%;
+    flex-basis: 35%;
+  }
+  .row.search-area .col-sm-2 {
     max-width: 30%;
     flex-basis: 30%;
+  }
+
+  .col-5.right-side.border-l .col-sm-4.both-temp {
+    max-width: 35%;
+    flex-basis: 35%;
   }
 
   .col-sm-1.favorite {
@@ -55,11 +69,17 @@
   }
 }
 
-@media only screen and (max-device-width: 480px) and (orientation: portrait) {
+@media (max-device-width: 480px) and (orientation: portrait) {
   .col-5.right-side.border-l {
     border: none;
-    max-width: 78%;
-    flex-basis: 78%;
+    max-width: 65%;
+    flex-basis: 65%;
+    margin-left: 14px;
+  }
+
+  .row.more-information {
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .row.more-information .col-sm-8 .card {
@@ -69,13 +89,36 @@
     max-width: 95%;
     flex-basis: 95%;
   }
-
-  .col-sm-4.weather-now img {
-    margin-left: 28px;
+  .col-sm-4.weather-now {
+    margin-left: 10px;
   }
 
-  .col.degree-type {
-    padding-right: 12px;
+  .col-sm-4.weather-now img {
+    margin-left: 25px;
+  }
+
+  .rows-group .col-sm-4 {
+    margin-right: 8px;
+    margin-left: -9px;
+  }
+
+  .col-5.right-side.border-l .col-sm-4.image {
+    max-width: 25%;
+  }
+
+  .col-sm-4.image {
+    padding-left: 0;
+    max-width: 0;
+    margin-left: 8px;
+  }
+
+  .col-F {
+    margin-left: 0;
+  }
+
+  .col-sm-1.favorite {
+    padding-left: 0;
+    border: 2px solid red;
   }
 }
 
