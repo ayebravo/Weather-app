@@ -207,6 +207,8 @@ function showTemperature(response) {
 
   let currentDate = new Date(response.data.dt * 1000);
   showDateTime(currentDate);
+
+  changeFavCityIcon(cityName);
 }
 
 function changeDescription(response) {
@@ -342,6 +344,24 @@ currentLocationButton.addEventListener("click", displayCurrentLocation);
 
 // Add 3 favorite cities to access their weather more easily
 
+function changeFavCityIcon(cityName) {
+  let firstFavCity = getCookie("favorite1");
+  let secondFavCity = getCookie("favorite2");
+  let thirdFavCity = getCookie("favorite3");
+
+  let iconFavCityEl = document.querySelector("#favorite");
+
+  if (
+    cityName === firstFavCity ||
+    cityName === secondFavCity ||
+    cityName === thirdFavCity
+  ) {
+    iconFavCityEl.innerHTML = `<i class="fas fa-star"></i>`;
+  } else {
+    iconFavCityEl.innerHTML = `<i class="far fa-star"></i>`;
+  }
+}
+
 // Add event listener (click) to star (icon) with id="star-favorite"
 
 function addFavoriteCity(event) {
@@ -350,31 +370,73 @@ function addFavoriteCity(event) {
   let cityElement = document.querySelector("#city");
   let cityName = cityElement.innerHTML;
 
-  let favoriteCity1 = document.querySelector("#favorite-1");
-  favoriteCity1.innerHTML = cityName;
+  let firstFavCity = getCookie("favorite1");
+  let secondFavCity = getCookie("favorite2");
+  let thirdFavCity = getCookie("favorite3");
 
-  setCookie("favorite1", cityName, 365);
+  let favoriteCity1 = document.querySelector("#favorite-1");
+  let favoriteCity2 = document.querySelector("#favorite-2");
+  let favoriteCity3 = document.querySelector("#favorite-3");
+
+  if (firstFavCity === "") {
+    favoriteCity1.innerHTML = cityName;
+
+    setCookie("favorite1", cityName, 365);
+  } else if (secondFavCity === "") {
+    favoriteCity2.innerHTML = cityName;
+    setCookie("favorite2", cityName, 365);
+  } else if (thirdFavCity === "") {
+    favoriteCity3.innerHTML = cityName;
+    setCookie("favorite3", cityName, 365);
+  } else {
+    favoriteCity1.innerHTML = cityName;
+    setCookie("favorite1", cityName, 365);
+  }
+
+  changeFavCityIcon(cityName);
 }
 
-let starElement = document.querySelector("#star-favorite");
+let starElement = document.querySelector("#favorite");
 starElement.addEventListener("click", addFavoriteCity);
 
-function handleClickCity(event) {
+function handleClickCity(event, cityId) {
   event.preventDefault();
-  let favoriteCity1El = document.querySelector("#favorite-1");
-  let city = favoriteCity1El.innerHTML;
+  let favoriteCityEl = document.querySelector(cityId);
+  let city = favoriteCityEl.innerHTML;
 
   search(city);
 }
 
 let favoriteCity1 = document.querySelector("#favorite-1");
-favoriteCity1.addEventListener("click", handleClickCity);
+favoriteCity1.addEventListener("click", function () {
+  handleClickCity(event, "#favorite-1");
+});
+
+let favoriteCity2 = document.querySelector("#favorite-2");
+favoriteCity2.addEventListener("click", function () {
+  handleClickCity(event, "#favorite-2");
+});
+
+let favoriteCity3 = document.querySelector("#favorite-3");
+favoriteCity3.addEventListener("click", function () {
+  handleClickCity(event, "#favorite-3");
+});
 
 // Get cookie when loading the page
 
-var firstFavCity = getCookie("favorite1");
-if (firstFavCity != "") {
+let firstFavCity = getCookie("favorite1");
+if (firstFavCity !== "") {
   favoriteCity1.innerHTML = firstFavCity;
+}
+
+let secondFavCity = getCookie("favorite2");
+if (secondFavCity !== "") {
+  favoriteCity2.innerHTML = secondFavCity;
+}
+
+let thirdFavCity = getCookie("favorite3");
+if (thirdFavCity !== "") {
+  favoriteCity3.innerHTML = thirdFavCity;
 }
 
 // Global variables that keep track of celsius temperature
