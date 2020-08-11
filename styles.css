@@ -1,7 +1,4 @@
 @media (max-width: 1291px) {
-  .col-md-5.right-side.border-l {
-    border: none;
-  }
   /*max-width: 60%;
     flex-basis: 60%;
   }
@@ -30,6 +27,10 @@
     margin-right: -55px;
     padding-right: 0;
   } */
+
+  .col-md-5.right-side.border-l {
+    border: none;
+  }
 
   .col-sm-4.current-temperature,
   .col-sm-4.weather-now
