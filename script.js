@@ -151,7 +151,7 @@ function showForecast(response) {
     /* div class="col-sm-4" */
 
     forecastElement.innerHTML += `<div class="row day-1">
-              <div class="col-2 col-md-4">
+              <div class="col-3 col-md-4">
                 <h5>${formatHours(forecast.dt * 1000)}</h5>
               </div>
               <div class="col-3 col-md-4 both-temp">
