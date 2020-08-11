@@ -1,5 +1,5 @@
 @media (max-width: 1291px) {
-  .col-5.right-side.border-l {
+  /* .col-md-5.right-side.border-l {
     border: none;
     max-width: 60%;
     flex-basis: 60%;
@@ -7,7 +7,7 @@
   .col-md-7.left-side {
     max-width: 100%;
     flex-basis: 75%;
-  }
+  } */
 
   .row.more-information .card {
     max-width: 84%;
@@ -23,38 +23,39 @@
 }
 
 @media (max-width: 576px) {
-  .row.current-city {
+  /* .row.current-city {
     max-width: 100%;
     flex-basis: 100%;
     margin-right: -55px;
     padding-right: 0;
-  }
+  } */
 
   .col-sm-4.current-temperature,
-  .col-sm-4.weather-now,
-  .row.current-city .col-sm-4,
-  .row.current-city.col.degree-type,
-  .col-5.right-side.border-l .col-sm-4 {
+  .col-sm-4.weather-now
+  /* .row.current-city .col-sm-4,
+  .row.current-city.col.degree-type */
+  /* .col-md-5.right-side.border-l .col-sm-4 */ {
     max-width: 35%;
     flex-basis: 35%;
   }
 
-  .row.search-area .col-sm-8 {
+  /*  .row.search-area .col-sm-8 {
     max-width: 70%;
     flex-basis: 70%;
-  }
+  } */
 
   .row.more-information .card {
     max-width: 75%;
     flex-basis: 75%;
   }
 
-  .row.search-area .col-sm-2 {
+  /* .row.search-area .col-sm-2 {
     max-width: 30%;
     flex-basis: 30%;
-  }
+  } */
 
-  .col-5.right-side.border-l .col-sm-4.both-temp {
+  /* .col-md-5.right-side.border-l  */
+  .col-sm-4.both-temp {
     max-width: 35%;
     flex-basis: 35%;
   }
@@ -65,7 +66,7 @@
   }
 }
 
-@media (orientation: portrait) {
+/* @media (max-width: 375px) and (orientation: portrait) {
   .col-5.right-side.border-l {
     border: none;
     max-width: 65%;
@@ -114,8 +115,7 @@
 
   .col-sm-1.favorite {
     padding-left: 32px;
-  }
-}
+  } */
 
 body {
   margin: 30px;
@@ -152,7 +152,7 @@ a {
   font-size: 20px;
 }
 
-.col-5.right-side {
+.col-md-5.right-side {
   min-width: fit-content;
   padding-right: 0;
 }
