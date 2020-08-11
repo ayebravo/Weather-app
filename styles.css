@@ -1,12 +1,4 @@
 @media (max-width: 1291px) {
-  /*max-width: 60%;
-    flex-basis: 60%;
-  }
-  .col-md-7.left-side {
-    max-width: 100%;
-    flex-basis: 75%;
-  } */
-
   .row.more-information .card {
     max-width: 84%;
     flex-basis: 84%;
@@ -27,100 +19,17 @@
 }
 
 @media (max-width: 576px) {
-  /* .row.current-city {
-    max-width: 100%;
-    flex-basis: 100%;
-    margin-right: -55px;
-    padding-right: 0;
-  } */
-
   .col-sm-4.current-temperature,
-  .col-sm-4.weather-now
-  /* .row.current-city .col-sm-4,
-  .row.current-city.col.degree-type */
-  /* .col-md-5.right-side.border-l .col-sm-4 */ {
+  .col-sm-4.weather-now {
     max-width: 35%;
     flex-basis: 35%;
   }
-
-  /*  .row.search-area .col-sm-8 {
-    max-width: 70%;
-    flex-basis: 70%;
-  } */
 
   .row.more-information .card {
     max-width: 75%;
     flex-basis: 75%;
   }
-
-  /* .row.search-area .col-sm-2 {
-    max-width: 30%;
-    flex-basis: 30%;
-  } */
-
-  /* .col-md-5.right-side.border-l  */
-
-  /* .col-md-4.both-temp {
-    max-width: 35%;
-    flex-basis: 35%;
-  } */
-
-  /* .col-sm-1.favorite {
-    max-width: 10%;
-    flex-basis: 10%;
-  } */
 }
-
-/* @media (max-width: 375px) and (orientation: portrait) {
-  .col-5.right-side.border-l {
-    border: none;
-    max-width: 65%;
-    flex-basis: 65%;
-    margin-left: 14px;
-  }
-
-  .row.more-information {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .row.more-information .col-sm-8 .card {
-    padding-right: 0px;
-    padding-left: 0px;
-
-    max-width: 95%;
-    flex-basis: 95%;
-  }
-  .col-sm-4.weather-now {
-    margin-left: 10px;
-  }
-
-  .col-sm-4.weather-now img {
-    margin-left: 25px;
-  }
-
-  .rows-group .col-sm-4 {
-    margin-right: 8px;
-    margin-left: -9px;
-  }
-
-  .col-5.right-side.border-l .col-sm-4.image {
-    max-width: 25%;
-  }
-
-  .col-sm-4.image {
-    padding-left: 0;
-    max-width: 0;
-    margin-left: 8px;
-  }
-
-  .col-F {
-    margin-left: 0;
-  }
-
-  .col-sm-1.favorite {
-    padding-left: 32px;
-  } */
 
 body {
   margin: 30px;
