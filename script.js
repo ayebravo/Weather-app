@@ -148,11 +148,13 @@ function showForecast(response) {
     forecast = response.data.list[index];
     let forecastIcon = forecast.weather[0].icon;
 
+    /* div class="col-sm-4" */
+
     forecastElement.innerHTML += `<div class="row day-1">
-              <div class="col-sm-4">
+              <div class="col-2 col-md-4">
                 <h5>${formatHours(forecast.dt * 1000)}</h5>
               </div>
-              <div class="col-sm-4 both-temp">
+              <div class="col-3 col-md-4 both-temp">
                 <p><span class="max-temp forecastItem">${Math.round(
                   forecast.main.temp_max
                 )}</span>°</p>
@@ -160,7 +162,7 @@ function showForecast(response) {
                   forecast.main.temp_min
                 )}</span>°</p>
               </div>
-              <div class="col-sm-4 image">
+              <div class="col-3 col-md-4 image">
                 <img src="${changeImage(forecastIcon)}" alt="${
       forecast.weather[0].description
     }" />
