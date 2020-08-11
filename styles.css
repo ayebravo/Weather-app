@@ -110,7 +110,7 @@ a {
 }
 
 .city {
-  margin: 14px;
+  margin: 14px 0 14px 14px;
 }
 
 .current-city {
