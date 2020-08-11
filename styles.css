@@ -60,10 +60,10 @@
     flex-basis: 35%;
   }
 
-  .col-sm-1.favorite {
+  /* .col-sm-1.favorite {
     max-width: 10%;
     flex-basis: 10%;
-  }
+  } */
 }
 
 /* @media (max-width: 375px) and (orientation: portrait) {
@@ -205,7 +205,7 @@ a {
   min-width: fit-content;
 }
 
-.col-sm-1.favorite {
+.col-md-1.favorite {
   margin-left: 40px;
   margin-right: -6px;
 }
@@ -318,7 +318,7 @@ p.date-6 {
   margin-left: 60px;
 }
 
-.row.more-information .col-sm-8 {
+.row.more-information .col-md-8 {
   padding-left: 15px;
   padding-right: 42px;
 }
