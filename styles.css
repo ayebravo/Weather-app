@@ -129,6 +129,10 @@ a {
   color: #32a138;
 }
 
+.fas.fa-star:hover {
+  cursor: pointer;
+}
+
 .far.fa-star {
   font-size: 22px;
   margin-top: 10px;

@@ -364,7 +364,7 @@ function changeFavCityIcon(cityName) {
 
 // Add event listener (click) to star (icon) with id="star-favorite"
 
-function addFavoriteCity(event) {
+function handleStarClick(event) {
   event.preventDefault();
 
   let cityElement = document.querySelector("#city");
@@ -378,28 +378,49 @@ function addFavoriteCity(event) {
   let favoriteCity2 = document.querySelector("#favorite-2");
   let favoriteCity3 = document.querySelector("#favorite-3");
 
-  if (firstFavCity === "") {
-    favoriteCity1.innerHTML = cityName;
-
-    setCookie("favorite1", cityName, 365);
-  } else if (secondFavCity === "") {
-    favoriteCity2.innerHTML = cityName;
-    setCookie("favorite2", cityName, 365);
-  } else if (thirdFavCity === "") {
-    favoriteCity3.innerHTML = cityName;
-    setCookie("favorite3", cityName, 365);
+  // Check if cityName(current city element) is one of the favorites
+  if (
+    cityName === firstFavCity ||
+    cityName === secondFavCity ||
+    cityName === thirdFavCity
+  ) {
+    // Remove city from favorites when I click star
+    if (cityName === firstFavCity) {
+      favoriteCity1.innerHTML = "Favorite city 1";
+      setCookie("favorite1", "", 365);
+    } else if (cityName === secondFavCity) {
+      favoriteCity2.innerHTML = "Favorite city 2";
+      setCookie("favorite2", "", 365);
+    } else if (cityName === thirdFavCity) {
+      favoriteCity3.innerHTML = "Favorite city 3";
+      setCookie("favorite3", "", 365);
+    }
   } else {
-    favoriteCity1.innerHTML = cityName;
-    setCookie("favorite1", cityName, 365);
+    // Add city to favorite
+
+    if (firstFavCity === "") {
+      favoriteCity1.innerHTML = cityName;
+
+      setCookie("favorite1", cityName, 365);
+    } else if (secondFavCity === "") {
+      favoriteCity2.innerHTML = cityName;
+      setCookie("favorite2", cityName, 365);
+    } else if (thirdFavCity === "") {
+      favoriteCity3.innerHTML = cityName;
+      setCookie("favorite3", cityName, 365);
+    } else {
+      favoriteCity1.innerHTML = cityName;
+      setCookie("favorite1", cityName, 365);
+    }
   }
 
   changeFavCityIcon(cityName);
 }
 
 let starElement = document.querySelector("#favorite");
-starElement.addEventListener("click", addFavoriteCity);
+starElement.addEventListener("click", handleStarClick);
 
-function handleClickCity(event, cityId) {
+function showFavoriteCity(event, cityId) {
   event.preventDefault();
   let favoriteCityEl = document.querySelector(cityId);
   let city = favoriteCityEl.innerHTML;
@@ -409,17 +430,17 @@ function handleClickCity(event, cityId) {
 
 let favoriteCity1 = document.querySelector("#favorite-1");
 favoriteCity1.addEventListener("click", function () {
-  handleClickCity(event, "#favorite-1");
+  showFavoriteCity(event, "#favorite-1");
 });
 
 let favoriteCity2 = document.querySelector("#favorite-2");
 favoriteCity2.addEventListener("click", function () {
-  handleClickCity(event, "#favorite-2");
+  showFavoriteCity(event, "#favorite-2");
 });
 
 let favoriteCity3 = document.querySelector("#favorite-3");
 favoriteCity3.addEventListener("click", function () {
-  handleClickCity(event, "#favorite-3");
+  showFavoriteCity(event, "#favorite-3");
 });
 
 // Get cookie when loading the page
